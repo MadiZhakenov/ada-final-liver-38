@@ -13,6 +13,7 @@ from src.eda import run_eda
 from src.enrich import enrich_registry
 from src.io_load import download_raw_csv, load_and_optimize
 from src.models import evaluate_models
+from src.illnesses_kz import illnesses_rates_per_100k
 from src.rates import rates_per_100k
 from src.sql_runner import run_all_queries
 from src.stats_tests import run_stat_tests
@@ -49,6 +50,8 @@ def run_full_pipeline() -> None:
     run_eda(df)
     print("   KM:", compare_naive_vs_km(df))
     rates_per_100k(df)
+    egov_rates = illnesses_rates_per_100k()
+    print(f"   egov liver ICD rows/rates: {len(egov_rates)} regions")
 
     print("6) Stats + models ...")
     run_stat_tests(df)

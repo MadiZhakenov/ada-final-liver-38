@@ -14,6 +14,10 @@ data/interim/*
 !data/interim/.gitkeep
 data/processed/*
 !data/processed/.gitkeep
+!data/processed/illnesses_liver.csv
+!data/processed/illnesses_liver.json
+!data/processed/illnesses_liver_summary.json
+data/raw/_egov_cookies.txt
 reports/figures/*
 !reports/figures/.gitkeep
 !reports/figures/*.png
