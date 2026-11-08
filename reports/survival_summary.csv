@@ -1,0 +1,2 @@
+naive_mean_days,km_median_days,n,n_censored,figure,note
+436.41,460.0,1700,425,C:\Users\User\Downloads\Домашка\final_project\liver_project\reports\figures\05_kaplan_meier.png,Naive mean ignores censoring; KM accounts for patients still on registry.

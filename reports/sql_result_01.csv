@@ -1,0 +1,51 @@
+patient_id_hash,sex,age,icd10,icd10_name,region_name,dt_beg
+cf867da8523cc3640e5d8e6818afaca420b4a97756fc03c4eb3d2bfa5aca8c02,F,58,K70,Alcoholic liver disease,Shymkent city,2022-06-17
+06db0f0452076906850e0c38e3f2357719ff9cc1ab56f2ca42d8ebfcfc892377,M,71,K76,Other diseases of liver,Almaty city,2022-05-17
+df9db530ba380b7367d718818303d1494637645608927cf8027e2516d22d4920,F,48,K70,Alcoholic liver disease,Aktobe region,2022-07-17
+ebab2041323e99dddfe3af15dea90122b18c5ed8e20bc4626786b6b090568128,M,34,K74,Fibrosis and cirrhosis,Almaty city,2022-06-30
+953858eb9d4b8768514110b7d557d740e4338913369d76a13e5e4423baf2793c,M,62,K76,Other diseases of liver,Almaty region,2022-10-18
+3702a10adc3535f316a16c62fea325a6235cab3aede6ac1bb959ea27e3dae6e5,M,27,K74,Fibrosis and cirrhosis,West Kazakhstan,2022-07-12
+2ae04a24fbed60172aa11f7ed962b6baf46ecb210f7c4e350596b9e531daf555,F,80,K74,Fibrosis and cirrhosis,Aktobe region,2023-06-16
+c163b55884b079309ca29f7f93484a65b8de1c0802bd5d9f98508f5de1f385fc,F,40,K74,Fibrosis and cirrhosis,Almaty region,2022-05-14
+3b05350824cb1675eab2ca98104e0b029d2e34de429dae6c8de461c226015595,F,58,K76,Other diseases of liver,Karaganda region,2023-07-14
+bd564411f663407f51df7a064b786970d374e4cf60de13a11981a9c97ced5436,M,77,K70,Alcoholic liver disease,Atyrau region,2022-10-28
+b0b024f28773e496062b4559ce1c2e257467681e17bf93a93ee54c3a7e37283f,F,38,K76,Other diseases of liver,Pavlodar region,2023-09-11
+f63fa0c8ca717b23b33a905daba362d2d96e30864b1c9c25e053c2e164c53f30,M,42,K76,Other diseases of liver,East Kazakhstan,2023-04-07
+0f15572d2ea8bf67cddb186dda3fe64876ee929770fe5d8b5665f5877003255c,F,30,K76,Other diseases of liver,East Kazakhstan,2024-03-25
+c4ea3e92c1dd7bbcf3f4752f7ad6cfa479339fd9b50706871b495a5428ab2e01,M,30,K74,Fibrosis and cirrhosis,Kostanay region,2023-01-31
+da3c9231cfddcbf16a4331076a7a7430b03f6bef57d6cbf86df1cf9171836852,F,43,K74,Fibrosis and cirrhosis,Aktobe region,2022-09-23
+3bff12b616165ff51b60a1aa5bc0e1fb69e35de77ad82ed26515b3959848ddd3,F,72,K73,Chronic hepatitis,East Kazakhstan,2023-06-15
+d7e46cd460ddc6da16b49fbd26c9a4f0c41d6eaeed96b834dbae90d59ecd6611,F,55,K70,Alcoholic liver disease,Aktobe region,2023-08-16
+e0f375f475e38a520684869f953cc2770717ab785481b2104fca666a3a4318df,M,59,K73,Chronic hepatitis,Astana city,2023-01-31
+b993c94d2a786eeb0e16840cd69adafa6995256660c253e84aad1c78504dece8,M,43,K76,Other diseases of liver,Zhambyl region,2023-05-19
+e5f57fadb60d9ce6f7d82885e93ba255b7a749359f20718386c790d742261dbd,F,22,K74,Fibrosis and cirrhosis,Pavlodar region,2023-02-28
+0ba0845cc66f863fbf280b051cf384487412e3907b3dac48c22f29192d3b6d9c,F,41,K75,Other inflammatory liver diseases,Karaganda region,2022-10-03
+3ba644396812bbdfaa1b30347e3817393870bec330ae4c3d72ce5c93ede9a721,M,72,K70,Alcoholic liver disease,Kostanay region,2022-10-10
+9c30eb1f534443be1d63f9bf32803a83a2d70c847e2d87e6eb06fcadb1af3ac1,M,21,K75,Other inflammatory liver diseases,Karaganda region,2024-03-27
+643cbb239b5c67bc11c97d0047bd209c72db328b088600b939c6e50794682536,M,43,K75,Other inflammatory liver diseases,Kostanay region,2023-08-31
+1a31698b93ba3be08507bf5bafd2cb0e128d72cbdc860962b1dd3c3b79974940,F,63,K70,Alcoholic liver disease,Almaty city,2022-03-27
+01d748b865c8cd8f40293260c28741007ba9d8d000ab758bb8f0b6c1f4ea5e3c,M,49,K76,Other diseases of liver,Almaty region,2024-05-15
+92e4830c8f950c27134a68b6e9f7e9affd53d704bfef11fb352a303789ebb60f,F,57,K70,Alcoholic liver disease,Mangystau region,2023-10-03
+c71c0a7d552c57f79fae41edd865969d23424a9f00403b5d44c7b8226701d815,M,21,K70,Alcoholic liver disease,Turkestan region,2022-02-15
+90ee733689c5e0bab093aebac47238cf235bb287d870393b1e59168e35711e56,F,79,K70,Alcoholic liver disease,Karaganda region,2023-10-18
+6c78958e3370fe4666f0483b8fce55b64df770f7030297e08b1658a47efc6414,M,40,K74,Fibrosis and cirrhosis,Zhambyl region,2023-06-15
+af7c7485978027a2d1796d177220424b9d3b7a2a06b9bc0ee4b78859054e7098,M,52,K74,Fibrosis and cirrhosis,Almaty region,2024-04-03
+52fe5d2ee967ce2fb5b53be34fd2d34cdd6c984007605189604a396091223976,M,31,K74,Fibrosis and cirrhosis,Almaty region,2023-03-17
+a34109e20718004d55c690b5ed2d51f0a593262d65937be9ae23fa1c2cbc3d92,M,77,K70,Alcoholic liver disease,Aktobe region,2023-04-12
+7facc318f666f5c0c01e47e32aad0944afd8781e11475e14ef6c74df9252b407,M,41,K74,Fibrosis and cirrhosis,West Kazakhstan,2022-10-11
+c9dfee8e658f5e0e63e48d0b55c346ab3113b4d893a1b4e4364e76f4850f7d68,F,80,K73,Chronic hepatitis,West Kazakhstan,2022-10-17
+5f1b20d0d04ea513521348d78d710ce5e8117eeb897924e179aabd3259c3068d,M,63,K75,Other inflammatory liver diseases,Almaty region,2023-07-11
+ca639096e0f02613b4c3732024b9da3b977df3ddc993e9e02f44b991153618b8,M,44,K73,Chronic hepatitis,Pavlodar region,2024-01-15
+d4657a2e4b14154f663f28640cb1ce4c4c161371e7e29568da23e2e6e65d3180,M,68,K74,Fibrosis and cirrhosis,Karaganda region,2024-03-12
+b0a527d1796c7e09ca2c2d15f4b218359850166de1ce5ff8022cb36df268e845,F,46,K70,Alcoholic liver disease,North Kazakhstan,2023-11-25
+3ef39c2b22ea69759c52bf74b97971f93f366bacd6973c7260864a12751b1574,M,78,K75,Other inflammatory liver diseases,Atyrau region,2023-07-03
+f30043489ddeb77c6f0c9a1e7fd8f610fcb3b8009665b2dca07ec7a2c08c80ca,F,61,K70,Alcoholic liver disease,Karaganda region,2023-03-27
+72c0ab80f8456fdddb43d5f0e520d3b2cb12336560b791b90ae98e62b45adfa1,M,47,K75,Other inflammatory liver diseases,Kostanay region,2022-11-02
+87bd26193b09bd582b70593a69094c59a05e275975f2b146099a4e72273c9cff,M,79,K75,Other inflammatory liver diseases,East Kazakhstan,2023-11-23
+5d36b1eb3894fe206cf79f9bac9af12ed7c05d56769e98e2415bd56f4d16ea9e,F,35,K70,Alcoholic liver disease,North Kazakhstan,2022-10-14
+06973c9da7d894f2e754bbd47cf6230c3a94430b90ac23766400ad74544ade82,M,34,K70,Alcoholic liver disease,Atyrau region,2022-08-30
+5db79a0eddc506080df7d39968b7f124a0d91196c01ec65f6bbc842898809ae6,F,66,K70,Alcoholic liver disease,Aktobe region,2024-02-21
+04e4f6db62b5c55215df0b2bbdfe3ca244264612f75171dbfff55555e3bc7e87,F,70,K76,Other diseases of liver,Aktobe region,2023-06-15
+0281f7e665f8604180defe189984d214375d82dc3c55faf9311d86bd645279c2,M,63,K70,Alcoholic liver disease,Astana city,2022-11-15
+5987d47e286bef240ea4c7ce0081b98d7c24cec65cb618c4f19bcfacabb6f277,F,74,K70,Alcoholic liver disease,North Kazakhstan,2024-02-18
+fd4b892c98188add1dcdee035edb7a19853004ebd81e493b1b2a814258baa006,M,71,K73,Chronic hepatitis,Abai region,2024-05-16

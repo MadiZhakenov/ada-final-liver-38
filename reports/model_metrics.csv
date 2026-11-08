@@ -1,0 +1,4 @@
+model,roc_auc,f1,seconds,peak_memory_mb
+dummy,0.5,0.7102,0.08,0.6084
+logreg,0.8968,0.8286,0.1081,0.6444
+rf,0.9439,0.91,8.1795,1.5791

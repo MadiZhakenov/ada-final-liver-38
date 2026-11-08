@@ -1,0 +1,78 @@
+{
+  "n_rows": 1700,
+  "n_cols": 22,
+  "missing_rate": {
+    "Age": 0.0,
+    "Gender": 0.0,
+    "BMI": 0.0,
+    "AlcoholConsumption": 0.0,
+    "Smoking": 0.0,
+    "GeneticRisk": 0.0,
+    "PhysicalActivity": 0.0,
+    "Diabetes": 0.0,
+    "Hypertension": 0.0,
+    "LiverFunctionTest": 0.0,
+    "Diagnosis": 0.0,
+    "patient_id_hash": 0.0,
+    "region": 0.0,
+    "organization": 0.0,
+    "dispensary_group": 0.0,
+    "icd10": 0.0,
+    "icd10_name": 0.0,
+    "DT_BEG": 0.0,
+    "DT_END": 0.25,
+    "censored": 0.0,
+    "sex": 0.0,
+    "row_id": 0.0
+  },
+  "duplicates_full": 0,
+  "duplicates_key": 0,
+  "date_issues": {
+    "end_before_beg": 0,
+    "future_dates": 0
+  },
+  "icd_issues": {
+    "invalid_codes": 0,
+    "examples": []
+  },
+  "synthetic_check": {
+    "mean_abs_correlation": 0.0481,
+    "uniformity": {
+      "Age": {
+        "ks_vs_uniform": 0.0302
+      },
+      "Gender": {
+        "ks_vs_uniform": 0.5041
+      },
+      "BMI": {
+        "ks_vs_uniform": 0.0318
+      },
+      "AlcoholConsumption": {
+        "ks_vs_uniform": 0.0258
+      },
+      "Smoking": {
+        "ks_vs_uniform": 0.7082
+      },
+      "GeneticRisk": {
+        "ks_vs_uniform": 0.5753
+      },
+      "PhysicalActivity": {
+        "ks_vs_uniform": 0.019
+      },
+      "Diabetes": {
+        "ks_vs_uniform": 0.8576
+      },
+      "Hypertension": {
+        "ks_vs_uniform": 0.8453
+      },
+      "LiverFunctionTest": {
+        "ks_vs_uniform": 0.0167
+      },
+      "Diagnosis": {
+        "ks_vs_uniform": 0.5506
+      }
+    },
+    "verdict": "likely_engineered_or_synthetic_features",
+    "note": "Official file is small clinical CSV from Ashyq; registry fields are deterministic enrichment for Cluster 7 pipeline."
+  }
+}

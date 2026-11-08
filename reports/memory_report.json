@@ -1,0 +1,10 @@
+{
+  "rows": 1700,
+  "cols": 11,
+  "memory_mb_before": 0.1428,
+  "memory_mb_after": 0.0374,
+  "csv_mb": 0.1433,
+  "parquet_mb": 0.0442,
+  "load_seconds": 0.0785,
+  "chunksize": 400
+}

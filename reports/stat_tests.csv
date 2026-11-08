@@ -1,0 +1,11 @@
+factor,test,stat,p_value,dof,odds_ratio
+Gender,chi-square,60.3248,8.042808446412736e-15,1.0,2.1613
+Smoking,chi-square,67.166,2.4957666685037853e-16,1.0,2.523
+GeneticRisk,chi-square,61.5836,4.239350685540938e-14,2.0,
+Diabetes,chi-square,19.0247,1.2903900915450977e-05,1.0,1.903
+Hypertension,chi-square,48.5811,3.1691377693356274e-12,1.0,2.8053
+Age,mannwhitney,423015.5,7.872475658989371e-11,,
+BMI,mannwhitney,426509.0,7.435237145207803e-12,,
+AlcoholConsumption,mannwhitney,501870.0,1.3381740806516488e-46,,
+PhysicalActivity,mannwhitney,309848.0,2.157326971873163e-06,,
+LiverFunctionTest,mannwhitney,505687.0,5.296078274740632e-49,,
