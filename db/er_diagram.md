@@ -1,22 +1,15 @@
-# ER diagram (logical)
+# ER diagram (logical) — real Ashyq clinical + egov illnesses
 
 ```mermaid
 erDiagram
-    REGION ||--o{ ORGANIZATION : contains
-    ORGANIZATION ||--o{ OBSERVATION : hosts
-    DIAGNOSIS ||--o{ OBSERVATION : coded_as
-    DISPENSARY_GROUP ||--o{ OBSERVATION : assigned
-    PATIENT ||--o{ OBSERVATION : has
+    REGION ||--o{ ILLNESS_STAT : reports
+    DIAGNOSIS ||--o{ ILLNESS_STAT : coded_as
+    CLINICAL_CASE
 
     REGION {
         int region_id PK
         string region_name
         int population
-    }
-    ORGANIZATION {
-        int organization_id PK
-        string organization_code
-        int region_id FK
     }
     DIAGNOSIS {
         int diagnosis_id PK
@@ -24,26 +17,22 @@ erDiagram
         string icd10_name
         string icd_class
     }
-    DISPENSARY_GROUP {
-        int group_id PK
-        string group_code
-        string description
+    ILLNESS_STAT {
+        int stat_id PK
+        int region_id FK
+        int diagnosis_id FK
+        int patients_c
     }
-    PATIENT {
-        string patient_id_hash PK
+    CLINICAL_CASE {
+        string case_id_hash PK
         string sex
         int age
         float bmi
         int diagnosis_label
     }
-    OBSERVATION {
-        int observation_id PK
-        string patient_id_hash FK
-        int diagnosis_id FK
-        int organization_id FK
-        int group_id FK
-        date dt_beg
-        date dt_end
-        int censored
-    }
 ```
+
+Notes:
+- `clinical_case` = Ashyq clinical CSV (no fabricated ICD/region/dates).
+- `illness_stat` = real egov open-data aggregates filtered to liver ICD-10.
+- No synthetic observation / dispensary / organization medical entities.

@@ -1,2 +1,2 @@
-naive_mean_days,km_median_days,n,n_censored,figure,note
-436.41,460.0,1700,425,C:\Users\User\Downloads\Домашка\final_project\liver_project\reports\figures\05_kaplan_meier.png,Naive mean ignores censoring; KM accounts for patients still on registry.
+status,n_rows_clinical,naive_mean_days,km_median_days,n_censored,note
+not_applicable,1700,,,,Ashyq Liver_disease_data.csv has no registry observation dates (DT_BEG/DT_END) or censoring flags. Per instructor guidance we do not synthesize medical follow-up spells. Kaplan–Meier vs naive duration is therefore not computed. Regional volume uses real egov illnesses data instead.

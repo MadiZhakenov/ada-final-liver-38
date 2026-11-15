@@ -9,13 +9,16 @@
 ## Goal
 Estimate how lifestyle and clinical factors relate to liver disease diagnosis and compare Dummy, Logistic Regression, and Random Forest using stratified cross-validation (ROC-AUC, F1, calibration).
 
-## Data
-- Dataset page: https://ashyq.data.gov.kz/dataset/magda-ds-8ec6e917-d808-494a-b84d-177dd857d7c4/details
-- File: https://s3.sdu.gov.kz/magda-datasets/Liver_disease_data.csv
-- Columns: Age, Gender, BMI, AlcoholConsumption, Smoking, GeneticRisk, PhysicalActivity, Diabetes, Hypertension, LiverFunctionTest, Diagnosis
-- Population denominators for regional rates: approximate values aligned with public regional statistics (`stat.gov.kz`)
+## Data (two real layers — no medical synthesis)
+1. **Ashyq / Smart Data Ukimet clinical CSV** (~1700 rows)  
+   https://ashyq.data.gov.kz/dataset/magda-ds-8ec6e917-d808-494a-b84d-177dd857d7c4/details  
+   Columns: Age, Gender, BMI, AlcoholConsumption, Smoking, GeneticRisk, PhysicalActivity, Diabetes, Hypertension, LiverFunctionTest, Diagnosis  
+2. **Egov illnesses** filtered to liver ICD-10 (B15–B19, K70–K77, C22) for regional rates  
+   https://data.egov.kz/datasets/view?index=illnesses  
+3. Population denominators: approximate public regional figures (`stat.gov.kz`)
 
-The source file contains clinical risk factors only. Registry-oriented attributes required by Cluster 7 (hashed patient id, ICD-10, region, organization, observation dates, censoring) are added in a controlled preprocessing step and described in the report limitations. Raw identifiers are never stored in the database or repository.
+Instructor guidance: do **not** invent medical registry fields (fake cards, ICD, regions, observation dates).  
+Dataset size is below the recommended 500k guideline; that size is **recommended**, not mandatory, and real data without synthesis was agreed.
 
 ## Setup
 ```bash
@@ -35,13 +38,14 @@ python -m src.main --menu
 
 ## Pipeline
 1. Chunked CSV load, dtype optimization, Parquet export, memory report  
-2. Salted hashing of patient identifiers before database load  
-3. Data-quality audit and distribution checks  
-4. SQLite schema and SQL queries (JOIN, HAVING, subquery, CTE, window functions)  
-5. EDA, monthly registry series, Kaplan–Meier vs naive duration, rates per 100k  
-6. Chi-square, Mann–Whitney, odds ratios  
-7. Dummy / Logistic Regression / Random Forest with stratified CV  
-8. Console menu and Streamlit dashboard (region, ICD class, sex, period)
+2. Technical `case_id_hash` only (privacy demo) — no fabricated NOMKART  
+3. Quality audit + Topic-38 synthetic/engineered heuristic on clinical features  
+4. SQLite: `clinical_case` + egov `illness_stat` / `diagnosis` / `region`; 10 SQL queries  
+5. EDA on Ashyq; egov ICD volume chart; rates per 100k from egov  
+6. Kaplan–Meier skipped (no real observation dates; documented)  
+7. Chi-square, Mann–Whitney, odds ratios on clinical factors  
+8. Dummy / Logistic Regression / Random Forest with stratified CV  
+9. Console menu + Streamlit (clinical filters + egov region/ICD)
 
 ## Layout
 ```
@@ -53,7 +57,7 @@ reports/   metrics, audits, figures
 
 ## Contribution
 - **Askhat Aubakirov:** data loading, Parquet, privacy, audit, SQLite/SQL  
-- **Madi Zhakenov:** EDA, survival, rates, statistical tests, models, Streamlit/CLI  
+- **Madi Zhakenov:** EDA, rates, statistical tests, models, Streamlit/CLI  
 
 ## Key outputs
 After `python -m src.main --full`:

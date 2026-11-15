@@ -3,21 +3,21 @@
     "model":"dummy",
     "roc_auc":0.5,
     "f1":0.7102,
-    "seconds":0.08,
-    "peak_memory_mb":0.6084
+    "seconds":0.2441,
+    "peak_memory_mb":0.6089
   },
   {
     "model":"logreg",
     "roc_auc":0.8968,
     "f1":0.8286,
-    "seconds":0.1081,
-    "peak_memory_mb":0.6444
+    "seconds":0.2936,
+    "peak_memory_mb":0.6438
   },
   {
     "model":"rf",
     "roc_auc":0.9439,
     "f1":0.91,
-    "seconds":8.1795,
-    "peak_memory_mb":1.5791
+    "seconds":20.8556,
+    "peak_memory_mb":1.5984
   }
 ]

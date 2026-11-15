@@ -1,6 +1,6 @@
 {
   "n_rows": 1700,
-  "n_cols": 22,
+  "n_cols": 14,
   "missing_rate": {
     "Age": 0.0,
     "Gender": 0.0,
@@ -13,27 +13,21 @@
     "Hypertension": 0.0,
     "LiverFunctionTest": 0.0,
     "Diagnosis": 0.0,
-    "patient_id_hash": 0.0,
-    "region": 0.0,
-    "organization": 0.0,
-    "dispensary_group": 0.0,
-    "icd10": 0.0,
-    "icd10_name": 0.0,
-    "DT_BEG": 0.0,
-    "DT_END": 0.25,
-    "censored": 0.0,
+    "case_id_hash": 0.0,
     "sex": 0.0,
-    "row_id": 0.0
+    "age_bin": 0.0
   },
   "duplicates_full": 0,
   "duplicates_key": 0,
   "date_issues": {
     "end_before_beg": 0,
-    "future_dates": 0
+    "future_dates": 0,
+    "note": "Ashyq CSV has no DT_BEG/DT_END; date checks not applicable."
   },
   "icd_issues": {
     "invalid_codes": 0,
-    "examples": []
+    "examples": [],
+    "note": "ICD codes come from egov illnesses layer, audited separately in SQL/EDA."
   },
   "synthetic_check": {
     "mean_abs_correlation": 0.0481,
@@ -73,6 +67,7 @@
       }
     },
     "verdict": "likely_engineered_or_synthetic_features",
-    "note": "Official file is small clinical CSV from Ashyq; registry fields are deterministic enrichment for Cluster 7 pipeline."
-  }
+    "note": "Ashyq clinical CSV only (Age, Gender, BMI, lifestyle/clinical factors, Diagnosis). No fabricated patient cards, ICD codes, regions, or observation dates. Regional ICD volume uses real egov illnesses open data. Dataset size (~1700 rows) is below the recommended 500k guideline; instructor agreed to keep real medical data without synthesis."
+  },
+  "data_policy": "No synthetic medical registry fields (fake NOMKART/ICD/region/dates). Analysis uses Ashyq clinical CSV + real egov illnesses aggregates."
 }

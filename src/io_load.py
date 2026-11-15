@@ -55,7 +55,7 @@ def load_and_optimize(path: Path = RAW_CSV, chunksize: int = 400) -> tuple[pd.Da
     mem_after = memory_mb(opt)
 
     PARQUET_PATH.parent.mkdir(parents=True, exist_ok=True)
-    # Clinical-only parquet first; enrichment overwrites later in pipeline.
+    # Temporary clinical parquet; prepare_clinical() rewrites with hashed keys.
     opt.to_parquet(PARQUET_PATH, index=False)
     csv_size = path.stat().st_size / (1024 ** 2)
     pq_size = PARQUET_PATH.stat().st_size / (1024 ** 2)

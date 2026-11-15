@@ -1,1 +1,2 @@
-ym,icd10,region,started,closed
+note
+Ashyq clinical CSV has no observation dates; monthly registry time series are not fabricated. See egov_icd_volume.csv instead.

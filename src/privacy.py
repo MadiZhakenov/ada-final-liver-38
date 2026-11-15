@@ -11,7 +11,7 @@ from src.config import get_salt
 
 
 def hash_nomkart(value: str | int, salt: str | None = None) -> str:
-    """HMAC-like salted SHA-256 of NOMKART / synthetic card id."""
+    """Salted SHA-256 for technical case keys (Ashyq has no native NOMKART)."""
     s = salt if salt is not None else get_salt()
     payload = f"{s}|{value}".encode("utf-8")
     return hashlib.sha256(payload).hexdigest()

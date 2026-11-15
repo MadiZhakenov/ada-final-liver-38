@@ -21,11 +21,19 @@ RAW_CSV = DATA_RAW / "Liver_disease_data.csv"
 ILLNESSES_LIVER_CSV = DATA_PROCESSED / "illnesses_liver.csv"
 ILLNESSES_LIVER_JSON = DATA_PROCESSED / "illnesses_liver.json"
 ILLNESSES_LIVER_SUMMARY = DATA_PROCESSED / "illnesses_liver_summary.json"
-PARQUET_PATH = DATA_PROCESSED / "liver_enriched.parquet"
+PARQUET_PATH = DATA_PROCESSED / "liver_clinical.parquet"
 SQLITE_PATH = DB_DIR / "liver.db"
 AUDIT_JSON = REPORTS / "audit_report.json"
 METRICS_JSON = REPORTS / "model_metrics.json"
 MEMORY_JSON = REPORTS / "memory_report.json"
+
+CLINICAL_FEATURE_NOTE = (
+    "Ashyq clinical CSV only (Age, Gender, BMI, lifestyle/clinical factors, Diagnosis). "
+    "No fabricated patient cards, ICD codes, regions, or observation dates. "
+    "Regional ICD volume uses real egov illnesses open data. "
+    "Dataset size (~1700 rows) is below the recommended 500k guideline; "
+    "instructor agreed to keep real medical data without synthesis."
+)
 
 DATA_URL = "https://s3.sdu.gov.kz/magda-datasets/Liver_disease_data.csv"
 DATASET_PAGE = (

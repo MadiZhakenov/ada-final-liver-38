@@ -1,6 +1,3 @@
-icd_class,n_cases
-K70,576
-K74,299
-K73,287
-K75,275
-K76,263
+sex,n_cases,diagnosis_pct
+M,857,64.4
+F,843,45.6

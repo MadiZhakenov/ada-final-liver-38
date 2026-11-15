@@ -1,16 +1,5 @@
-organization_code,region_name,n_obs
-ORG-008,Almaty city,59
-ORG-019,East Kazakhstan,54
-ORG-030,Kostanay region,52
-ORG-017,Zhambyl region,50
-ORG-031,Pavlodar region,50
-ORG-040,Aktobe region,50
-ORG-006,Karaganda region,49
-ORG-009,Atyrau region,49
-ORG-038,Mangystau region,49
-ORG-007,Pavlodar region,48
-ORG-016,Astana city,47
-ORG-015,Zhambyl region,45
-ORG-022,Almaty city,45
-ORG-003,Astana city,44
-ORG-010,Karaganda region,44
+age_bin,n,mean_bmi,mean_alcohol,diagnosis_pct
+31–45,402,27.3,9.9,43.3
+46–60,435,28.2,10.1,62.5
+60+,559,27.8,9.7,62.6
+≤30,304,27.2,9.6,46.1

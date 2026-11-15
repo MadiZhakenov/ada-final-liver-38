@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""EDA plots + monthly registry time series."""
+"""EDA on real Ashyq clinical data + egov ICD volume charts."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -8,7 +8,8 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
 
-from src.config import FIGURES, MIN_GROUP_SIZE
+from src.config import FIGURES, MIN_GROUP_SIZE, REPORTS
+from src.illnesses_kz import load_illnesses_liver
 
 
 def _save(fig: plt.Figure, name: str) -> Path:
@@ -23,7 +24,7 @@ def _save(fig: plt.Figure, name: str) -> Path:
 def plot_target_balance(df: pd.DataFrame) -> Path:
     fig, ax = plt.subplots(figsize=(6, 4))
     sns.countplot(data=df, x="Diagnosis", ax=ax, hue="Diagnosis", legend=False)
-    ax.set_title("Diagnosis class balance (0=no, 1=yes)")
+    ax.set_title("Diagnosis class balance (0=no, 1=yes) — Ashyq clinical")
     ax.set_xlabel("Diagnosis")
     ax.set_ylabel("Count")
     return _save(fig, "01_diagnosis_balance.png")
@@ -34,7 +35,7 @@ def plot_risk_boxplots(df: pd.DataFrame) -> Path:
     for ax, col in zip(axes, ["BMI", "AlcoholConsumption", "LiverFunctionTest"]):
         sns.boxplot(data=df, x="Diagnosis", y=col, ax=ax)
         ax.set_title(col)
-    fig.suptitle("Clinical factors by diagnosis")
+    fig.suptitle("Clinical factors by diagnosis (Ashyq)")
     return _save(fig, "02_risk_boxplots.png")
 
 
@@ -46,51 +47,42 @@ def plot_corr(df: pd.DataFrame) -> Path:
     corr = df[cols].corr(numeric_only=True)
     fig, ax = plt.subplots(figsize=(9, 7))
     sns.heatmap(corr, annot=False, cmap="vlag", center=0, ax=ax)
-    ax.set_title("Correlation heatmap (clinical features)")
+    ax.set_title("Correlation heatmap (Ashyq clinical features)")
     return _save(fig, "03_correlation.png")
 
 
-def monthly_registry_series(df: pd.DataFrame) -> tuple[pd.DataFrame, Path]:
-    work = df.copy()
-    work["DT_BEG"] = pd.to_datetime(work["DT_BEG"])
-    work["DT_END"] = pd.to_datetime(work["DT_END"])
-    work["beg_ym"] = work["DT_BEG"].dt.to_period("M").astype(str)
-    work["end_ym"] = work["DT_END"].dt.to_period("M").astype(str)
-
-    started = work.groupby(["beg_ym", "icd10", "region"], dropna=False).size().reset_index(name="started")
-    started = started.rename(columns={"beg_ym": "ym"})
-    closed = (
-        work.dropna(subset=["DT_END"])
-        .groupby(["end_ym", "icd10", "region"], dropna=False)
-        .size()
-        .reset_index(name="closed")
-        .rename(columns={"end_ym": "ym"})
+def plot_egov_icd_volume(illnesses: pd.DataFrame | None = None) -> tuple[pd.DataFrame, Path]:
+    """ICD-stem patient volume from real egov illnesses (no synthetic dates)."""
+    df = load_illnesses_liver() if illnesses is None else illnesses
+    by_stem = (
+        df.groupby("icd_stem", as_index=False)["patients_c"]
+        .sum()
+        .rename(columns={"patients_c": "n_patients"})
+        .sort_values("n_patients", ascending=False)
     )
-    series = started.merge(closed, on=["ym", "icd10", "region"], how="outer").fillna(0)
-    series["started"] = series["started"].astype(int)
-    series["closed"] = series["closed"].astype(int)
-
-    # Aggregate national monthly for plot (hide tiny groups elsewhere in tables).
-    nat = series.groupby("ym", as_index=False)[["started", "closed"]].sum().sort_values("ym")
-    nat["started_roll3"] = nat["started"].rolling(3, min_periods=1).mean()
-    nat["closed_roll3"] = nat["closed"].rolling(3, min_periods=1).mean()
+    by_stem = by_stem[by_stem["n_patients"] >= MIN_GROUP_SIZE]
 
     fig, ax = plt.subplots(figsize=(10, 4))
-    ax.plot(nat["ym"], nat["started"], label="Started", marker="o", markersize=3)
-    ax.plot(nat["ym"], nat["started_roll3"], label="Started MA(3)", linestyle="--")
-    ax.plot(nat["ym"], nat["closed"], label="Closed", marker="o", markersize=3)
-    ax.plot(nat["ym"], nat["closed_roll3"], label="Closed MA(3)", linestyle="--")
-    ax.set_title("Monthly registry events (national)")
-    ax.set_xlabel("Year-month")
-    ax.set_ylabel("Count")
-    ax.tick_params(axis="x", rotation=60)
-    ax.legend()
-    path = _save(fig, "04_monthly_registry.png")
+    ax.bar(by_stem["icd_stem"], by_stem["n_patients"])
+    ax.set_title("Egov liver ICD volume by code stem (real open data)")
+    ax.set_xlabel("ICD-10 stem")
+    ax.set_ylabel("Patients (sum)")
+    ax.tick_params(axis="x", rotation=45)
+    path = _save(fig, "04_egov_icd_volume.png")
 
-    # Suppress tiny groups for exported detailed table.
-    detailed = series.copy()
-    detailed = detailed[(detailed["started"] + detailed["closed"]) >= MIN_GROUP_SIZE]
-    return detailed, path
+    REPORTS.mkdir(parents=True, exist_ok=True)
+    by_stem.to_csv(REPORTS / "egov_icd_volume.csv", index=False)
+    # Keep legacy filename empty-ish note for old refs
+    note = pd.DataFrame(
+        [{
+            "note": (
+                "Ashyq clinical CSV has no observation dates; monthly registry "
+                "time series are not fabricated. See egov_icd_volume.csv instead."
+            )
+        }]
+    )
+    note.to_csv(REPORTS / "monthly_registry_series.csv", index=False)
+    return by_stem, path
 
 
 def run_eda(df: pd.DataFrame) -> dict:
@@ -99,7 +91,6 @@ def run_eda(df: pd.DataFrame) -> dict:
         "boxplots": str(plot_risk_boxplots(df)),
         "corr": str(plot_corr(df)),
     }
-    series, ts_path = monthly_registry_series(df)
-    paths["monthly"] = str(ts_path)
-    series.to_csv(FIGURES.parent / "monthly_registry_series.csv", index=False)
+    _, egov_path = plot_egov_icd_volume()
+    paths["egov_icd"] = str(egov_path)
     return paths

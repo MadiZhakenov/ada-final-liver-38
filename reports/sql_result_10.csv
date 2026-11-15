@@ -1,3 +1,2 @@
-censored,n,avg_days,min_days,max_days
-0,1275,364.7,30.0,699.0
-1,425,651.4,198.0,1095.0
+n_clinical,n_positive,clinical_positive_pct,n_egov_patients,n_regions,n_icd_codes
+1700,936,55.1,315862,27,86
